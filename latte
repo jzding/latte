@@ -35,11 +35,6 @@ IMG_TO_REPO = {"ose-ptp-operator-bundle": "https://github.com/openshift/ptp-oper
                "ose-kube-rbac-proxy": "https://github.com/openshift/kube-rbac-proxy"}
 
 
-# define image from extra.image.operator_manifests.related_images.pullspecs
-# example:
-# {'new': 'registry.redhat.io/openshift4/ose-cloud-event-proxy-rhel8@sha256:xxxx',
-#  'original': 'registry.redhat.io/openshift4/ose-cloud-event-proxy-rhel8@sha256:xxxx',
-#  'pinned': False}
 class Image:
     def __init__(self, data):
         self._data = data
@@ -121,23 +116,6 @@ class Build:
         return self._related_images
 
 
-def is_image_equal(img1, img2):
-    if img1 == "openshift-" + img2 or img2 == "openshift-" + img1:
-        return True
-    return img1 == img2
-
-
-def usage():
-    print('\nUsage: latte [-h] [-c container] [-v csv-version]')
-    print(' -h --help       : print this guide')
-    print(' -c <container>  : name of metadata container. Default is ose-ptp-operator-metadata-container')
-    print(' -v <version>    : csv version. For example v4.15.0.202311290506. Default is latest v4.15.')
-    print(' Example:')
-    print('   $latte : info for latest v4.15 build for ose-ptp-operator-metadata-container')
-    print('   $latte -v v4.15.0.202311290506: info for ose-ptp-operator-metadata-container build v4.15.0.202311290506')
-    print('   $latte -v v4.15.0.202311290506: build info for ose-ptp-operator-metadata-container build v4.15.0.202311290506')
-
-
 def main():
 
     if len(sys.argv) < 2:
@@ -168,13 +146,11 @@ def main():
     today = datetime.datetime.now()
     last_week = today - datetime.timedelta(days=14)
     last_week_iso = last_week.strftime('%Y-%m-%d %H:%M:%S')
-    # BUILD_STATES==COMPLETE(1)
+
     for img in build.related_images:
-        # print(f"search for releated image: {img.name}, package: {IMG_TO_PKG[img.name]}")
         builds = session.listBuilds(
+            # state=1 means BUILD_STATES = COMPLETE
             packageID=IMG_TO_PKG[img.name], state=1, completeAfter=last_week_iso, queryOpts=queryOpts)
-        # print(len(builds))
-        # print(f"searching for image with sha256 {img.sha256}")
         for b in builds:
             bb = Build(b)
             if img.sha256 == bb.sha256:
