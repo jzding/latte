@@ -1,14 +1,14 @@
 # latte
 
-latte works with [Brew](https://docs.engineering.redhat.com/pages/viewpage.action?spaceKey=Brew&title=Using+Brew#UsingBrew-Overview) to make your devops life easier.
+latte works with [Koji](https://github.com/koji-project/koji) to make your devops life easier.
 
 Find out the build, image, and commit-id of the containers included in the bundle build.
 
-Ptp bundle builds can be found at the brew page:
+Currently only support ptp bundle builds, which can be found at the brew page:
 https://brewweb.engineering.redhat.com/brew/packageinfo?packageID=73558
 
 ### Install
-Make sure you have python 3 and koji or brew installed, then download the latte and run.
+Make sure you have python3 and koji or brew installed, then download the latte and run.
 ```
 sudo dnf install python
 sudo dnf install koji
