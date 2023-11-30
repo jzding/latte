@@ -116,6 +116,17 @@ class Build:
         return self._related_images
 
 
+def usage():
+    print('\nUsage: latte [-h] [-c container] [-v csv-version]')
+    print(' -h --help       : print this guide')
+    print(' -c <container>  : name of metadata container. Default is ose-ptp-operator-metadata-container')
+    print(' -v <version>    : csv version. For example v4.15.0.202311290506. Default is latest v4.15.')
+    print(' Example:')
+    print('   $latte : info for latest v4.15 build for ose-ptp-operator-metadata-container')
+    print('   $latte -v v4.15.0.202311290506: info for ose-ptp-operator-metadata-container build v4.15.0.202311290506')
+    print('   $latte -v v4.15.0.202311290506: build info for ose-ptp-operator-metadata-container build v4.15.0.202311290506')
+
+
 def main():
 
     if len(sys.argv) < 2:
