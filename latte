@@ -155,7 +155,8 @@ def main():
             bb = Build(b)
             if img.sha256 == bb.sha256:
                 print(f"\nfound related build {bb.nvr}")
-                print(f"    {IMG_TO_REPO[img.name]}/commit/{bb.commit}")
+                print(f" image : {img.name}@{bb.sha256}")
+                print(f" commit: {IMG_TO_REPO[img.name]}/commit/{bb.commit}")
                 break
     print()
 
