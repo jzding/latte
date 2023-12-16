@@ -1,6 +1,6 @@
 # latte
 
-latte works with [Koji](https://github.com/koji-project/koji) to make your devops life easier.
+latte works with [Brew](https://brewweb.engineering.redhat.com/brew/index) and [Koji](https://github.com/koji-project/koji) to make your devops life easier.
 
 Find out the build, image, and commit-id of the containers included in the bundle build.
 
