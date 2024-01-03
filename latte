@@ -1,11 +1,12 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 import datetime
 import sys
 
 try:
     import koji
 except:
-    print("Need to install dependency: sudo dnf install koji")
+    print("Need to install koji:")
+    print("\tRun `pip3 install koji` or in fedora: `sudo dnf install koji`")
     exit(0)
 
 PKG_PTP_OPERATOR_BUNDLE = 73558
