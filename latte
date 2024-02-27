@@ -73,7 +73,8 @@ class Build:
     @property
     def commit(self):
         if self._commit is None:
-            self._commit = self.nvr.split('.')[-3][1:]
+            assembly_index = self.nvr.find("assembly")
+            self._commit = self.nvr[:assembly_index].split('.')[-2][1:]
         return self._commit
 
     @property
