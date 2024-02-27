@@ -13,6 +13,8 @@ Make sure you have python3 and koji or brew installed, then download the latte a
 sudo dnf install python
 sudo dnf install koji
 ```
+If you encounter SSL Cert error, follow this link to install dependencies:
+https://docs.engineering.redhat.com/display/Brew/Using+the+Brew+Prod+environment#UsingtheBrewProdenvironment-Commandline
 
 ### Usage
 ```
