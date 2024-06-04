@@ -76,10 +76,6 @@ class Build:
     def commit(self):
         if self._commit is None:
             assembly_index = self.nvr.find("assembly")
-<<<<<<< Updated upstream
-=======
-            print(f"DZK {self.nvr[:assembly_index]}")
->>>>>>> Stashed changes
             self._commit = self.nvr[:assembly_index].split('.')[-2][1:]
         return self._commit
 
