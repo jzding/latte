@@ -144,11 +144,11 @@ def main():
         print("build not found")
         return
 
-    queryOpts = {'order_by': ['-completion_time'], 'limit': 50}
+    queryOpts = {'order_by': ['-completion_time'], 'limit': 500}
 
     # Filter builds by date
     today = datetime.datetime.now()
-    last_week = today - datetime.timedelta(days=21)
+    last_week = today - datetime.timedelta(days=360)
     last_week_iso = last_week.strftime('%Y-%m-%d %H:%M:%S')
 
     for img in build.related_images:
